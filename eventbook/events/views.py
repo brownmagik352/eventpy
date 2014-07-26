@@ -1,13 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from models import Event
+from django.shortcuts import render, get_object_or_404
+
+from events.models import Event
 
 def index(request):
-	message = ""
-	for e in Event.objects.all():
-		message += "%s\t" % e.title
-	return HttpResponse("All Events:\t" + message)
+	events = Event.objects.all()
+	context = {'events':events}
+	return render(request, 'events/index.html', context)
 
 def detail(request, event_id):
-	e = Event.objects.get(pk=event_id)
-	return HttpResponse("%s" % e.title)
+	event = get_object_or_404(Event, pk=event_id)
+	return render(request, 'events/detail.html', {'event':event})
