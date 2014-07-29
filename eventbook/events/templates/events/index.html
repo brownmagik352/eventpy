@@ -1,9 +1,33 @@
-{% if events %}
+{% if groups %}
+	<ul>
+		{% for group in groups %}
+			<li><a href="{% url 'events:groupdetail' group.id %}">{{ group.name }}</a></li>
+			<ul>
+				{% for event in group.event_set.all %}
+					<li><a href="{% url 'events:eventdetail' event.id%}">{{event.title}}</a></li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>There are currently no registered groups.</p>
+{% endif %}
+
+<!-- {% if events %}
 	<ul>
 		{% for event in events %}
-			<li><a href="{% url 'events:detail' event.id %}">{{ event.title }}</a></li>
+			<li><a href="{% url 'events:eventdetail' event.id %}">{{ event.title }}</a></li>
 		{% endfor %}
 	</ul>
 {% else %}
 	<p>There are currently no events.</p>
 {% endif %}
+{% if groups %}
+	<ul>
+		{% for group in groups %}
+			<li><a href="{% url 'events:groupdetail' group.id %}">{{ group.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<p>There are currently no registered groups.</p>
+{% endif %} -->

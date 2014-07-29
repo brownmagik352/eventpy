@@ -1,12 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 
-from events.models import Event
+from events.models import Event, Group
 
 def index(request):
 	events = Event.objects.all()
-	context = {'events':events}
+	groups = Group.objects.all()
+	context = {'events':events, 'groups':groups}
 	return render(request, 'events/index.html', context)
 
-def detail(request, event_id):
+def eventdetail(request, event_id):
 	event = get_object_or_404(Event, pk=event_id)
-	return render(request, 'events/detail.html', {'event':event})
+	return render(request, 'events/eventdetail.html', {'event':event})
+
+def groupdetail(request, group_id):
+	group = get_object_or_404(Group, pk=group_id)
+	return render(request, 'events/groupdetail.html', {'group':group})

@@ -4,5 +4,6 @@ from events import views
 
 urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
-	url(r'^(?P<event_id>\d+)/$', views.detail, name='detail'),
+	url(r'^events/(?P<event_id>\d+)/$', views.eventdetail, name='eventdetail'),
+	url(r'^groups/(?P<group_id>\d+)/$', views.groupdetail, name='groupdetail'),
 )
