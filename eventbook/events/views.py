@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from datetime import datetime
 
 from events.models import Event, Group
 
@@ -14,4 +15,10 @@ def eventdetail(request, event_id):
 
 def groupdetail(request, group_id):
 	group = get_object_or_404(Group, pk=group_id)
+	return render(request, 'events/groupdetail.html', {'group':group})
+
+def newevent(request, group_id):
+	group = get_object_or_404(Group, pk=group_id)
+	e = group.event_set.create(title=request.POST['title'], location=request.POST['location'], time=datetime.now(), description="No description")
+	e.save()
 	return render(request, 'events/groupdetail.html', {'group':group})

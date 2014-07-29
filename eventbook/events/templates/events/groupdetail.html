@@ -1,3 +1,21 @@
 <h1>{{ group.name }}</h1>
 
+<h3>Events:</h3>
+<ul>
+	{% for event in group.event_set.all %}
+		<li><a href="{% url 'events:eventdetail' event.id%}">{{event.title}}</a></li>
+	{% endfor %}
+</ul>
+
+{% if error_message %}<p><em>{{ error_message }}</em></p>{% endif%}
+<form action="{% url 'events:newevent' group.id %}" method="post">
+	{% csrf_token %}
+	Title: <input type="text" name="title"><br/>
+	Location: <input type="text" name="location"><br/>
+	<!-- Time: <input type="datetime" name="time"><br />
+	Description: <textarea name="description" rows=25 cols=20></textarea> -->
+	<input type="submit" value="Submit" />
+
+</form>
+
 <a href="{% url 'events:index' %}">Home</a>
