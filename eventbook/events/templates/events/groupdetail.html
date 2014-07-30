@@ -8,12 +8,11 @@
 </ul>
 
 {% if error_message %}<p><em>{{ error_message }}</em></p>{% endif%}
-<form action="{% url 'events:newevent' group.id %}" method="post">
+<form id="newgroupform" action="{% url 'events:newevent' group.id %}" method="post">
 	{% csrf_token %}
 	Title: <input type="text" name="title"><br/>
 	Location: <input type="text" name="location"><br/>
-	<!-- Time: <input type="datetime" name="time"><br />
-	Description: <textarea name="description" rows=25 cols=20></textarea> -->
+	Description:<br/> <textarea name="description" form="newgroupform" rows=20 cols=50></textarea><br/>
 	<input type="submit" value="Submit" />
 
 </form>

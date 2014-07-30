@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect, HttpResponse
 from datetime import datetime
+from django.core.urlresolvers import reverse
 
 from events.models import Event, Group
 
@@ -19,6 +21,10 @@ def groupdetail(request, group_id):
 
 def newevent(request, group_id):
 	group = get_object_or_404(Group, pk=group_id)
-	e = group.event_set.create(title=request.POST['title'], location=request.POST['location'], time=datetime.now(), description="No description")
+	e = group.event_set.create(title=request.POST['title'], location=request.POST['location'], time=datetime.now(), description=request.POST['description']) #likes is defaulted
 	e.save()
-	return render(request, 'events/groupdetail.html', {'group':group})
+	# return render(request, 'events/groupdetail.html', {'group':group})
+	return HttpResponseRedirect(reverse('events:groupdetail', args=(group.id,)))
+
+
+
