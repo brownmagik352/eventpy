@@ -5,5 +5,11 @@
 <h3>{{ event.likes }} Likes</h3>
 <h3>{{ event.description }}</h3>
 
+<form id="likeevent" action="{% url 'events:like' event.id %}" method="post">
+	{% csrf_token %}
+	<input type="submit" value="Like"/>
+
+</form>
+
 <a href="{% url 'events:groupdetail' event.group.id %}">See all {{event.group.name}} events</a> <br/>
 <a href="{% url 'events:index' %}">Home</a>

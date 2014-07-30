@@ -26,5 +26,10 @@ def newevent(request, group_id):
 	# return render(request, 'events/groupdetail.html', {'group':group})
 	return HttpResponseRedirect(reverse('events:groupdetail', args=(group.id,)))
 
+def like(requst, event_id):
+	event = get_object_or_404(Event, pk=event_id)
+	event.likes += 1
+	event.save()
+	return HttpResponseRedirect(reverse('events:eventdetail', args=(event.id,)))
 
 

@@ -7,5 +7,6 @@ urlpatterns = patterns('',
 	url(r'^events/(?P<event_id>\d+)/$', views.eventdetail, name='eventdetail'),
 	url(r'^groups/(?P<group_id>\d+)/$', views.groupdetail, name='groupdetail'),
 	url(r'^groups/(?P<group_id>\d+)/new/$', views.newevent, name='newevent'),
+	url(r'^events/(?P<event_id>\d+)/like/$', views.like, name="like"),
 
 )
