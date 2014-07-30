@@ -20,10 +20,7 @@ class Event(models.Model):
 	def __unicode__(self):
 		return self.title
 
-	def atEXhouse(self):
-		return self.location == "33 Lynwood"
-
-	def popular(self):
+	def is_popular(self):
 		return self.likes >=3
 
 
