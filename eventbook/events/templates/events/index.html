@@ -1,3 +1,6 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'events/style.css' %}" />
+
 {% if groups %}
 	<ul>
 		{% for group in groups %}

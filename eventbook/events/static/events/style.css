@@ -1,0 +1,8 @@
+a:hover {
+	color: orange;
+}
+
+body {
+	background:  url("images/ocs.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
