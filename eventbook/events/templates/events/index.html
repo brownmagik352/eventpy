@@ -1,6 +1,6 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'events/style.css' %}" />
+{% extends 'events/base.html' %}
 
+{% block content %}
 {% if groups %}
 	<ul>
 		{% for group in groups %}
@@ -15,22 +15,4 @@
 {% else %}
 	<p>There are currently no registered groups.</p>
 {% endif %}
-
-<!-- {% if events %}
-	<ul>
-		{% for event in events %}
-			<li><a href="{% url 'events:eventdetail' event.id %}">{{ event.title }}</a></li>
-		{% endfor %}
-	</ul>
-{% else %}
-	<p>There are currently no events.</p>
-{% endif %}
-{% if groups %}
-	<ul>
-		{% for group in groups %}
-			<li><a href="{% url 'events:groupdetail' group.id %}">{{ group.name }}</a></li>
-		{% endfor %}
-	</ul>
-{% else %}
-	<p>There are currently no registered groups.</p>
-{% endif %} -->
+{% endblock %}

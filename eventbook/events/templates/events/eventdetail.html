@@ -1,3 +1,6 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
 <h1>{{ event.title }}</h1>
 
 <h3>{{ event.location }}</h3>
@@ -13,3 +16,5 @@
 
 <a href="{% url 'events:groupdetail' event.group.id %}">See all {{event.group.name}} events</a> <br/>
 <a href="{% url 'events:index' %}">Home</a>
+
+{% endblock %}
